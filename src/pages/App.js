@@ -11,12 +11,14 @@ import Footer from '../components/layout/Footer';
 
 // Pages import
 import Index from './index';
+import Login from './login';
 
 const App = () => (
   <Provider store={store}>
     <Router>
       <Header />
       <Route exact path="/" component={Index} />
+      <Route exact path="/login" component={Login} />
       <Footer />
     </Router>
   </Provider>
