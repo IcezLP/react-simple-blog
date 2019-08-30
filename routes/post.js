@@ -11,7 +11,7 @@ const router = express.Router();
 // @access  Public
 router.get('/', async (req, res) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find().sort({ createdAt: -1 });
     return res.json(posts);
   } catch (err) {
     return res.status(404).json({ posts: 'No post found' });
