@@ -12,6 +12,7 @@ import Footer from '../components/layout/Footer';
 // Pages import
 import Index from './index';
 import Login from './login';
+import Post from './post';
 
 const App = () => (
   <Provider store={store}>
@@ -19,6 +20,7 @@ const App = () => (
       <Header />
       <Route exact path="/" component={Index} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/post/:slug" component={Post} />
       <Footer />
     </Router>
   </Provider>
