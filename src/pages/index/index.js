@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'proptypes';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MDBContainer } from 'mdbreact';
-import { Link } from 'react-router-dom';
 import { getPosts } from '../../redux/actions/postActions';
+import Posts from '../../components/posts/Posts';
 
 class Index extends Component {
   async componentDidMount() {
@@ -11,18 +11,18 @@ class Index extends Component {
   }
 
   render() {
-    const { posts } = this.props.posts; // eslint-disable-line
+    const { posts, loading } = this.props.posts; // eslint-disable-line
+
+    const spinner = (
+      <div className="text-center">
+        <div className="spinner-border text-info" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    );
 
     return (
-      <MDBContainer className="py-5">
-        {posts.map((post) => (
-          <div key={post._id}>
-            <small className="d-block">{post.createdAt}</small>
-            <Link to={`/${post.slug}`}>{post.title}</Link>
-            <p>{post.content}</p>
-          </div>
-        ))}
-      </MDBContainer>
+      <MDBContainer className="py-5">{loading ? spinner : <Posts posts={posts} />}</MDBContainer>
     );
   }
 }
@@ -31,6 +31,7 @@ Index.propTypes = {
   getPosts: PropTypes.func.isRequired,
   posts: PropTypes.shape({
     posts: PropTypes.arrayOf(PropTypes.object),
+    loading: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
