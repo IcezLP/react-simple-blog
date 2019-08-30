@@ -9,6 +9,7 @@
     "body-parser": "^1.19.0",
     "bootstrap-css-only": "^4.3.1",
     "express": "^4.17.1",
+    "lodash": "^4.17.15",
     "mdbreact": "^4.19.1",
     "mongoose": "^5.6.11",
     "react": "^16.9.0",
@@ -18,7 +19,8 @@
     "react-scripts": "3.1.1",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "validator": "^11.1.0"
   },
   "scripts": {
     "react": "react-scripts start",

@@ -10,6 +10,7 @@ const api = require('./routes');
 // Mongoose params
 const dbParams = {
   useNewUrlParser: true,
+  useCreateIndex: true,
 };
 
 // MongoDB connection
