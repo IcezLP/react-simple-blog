@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const postSchema = new Schema({
+  cover: String,
   title: {
     type: String,
     required: true,
