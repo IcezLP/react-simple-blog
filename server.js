@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const { PORT, DB } = require('./config');
 
+// Routes import
+const post = require('./routes/post');
+
 const server = express();
 
 // Mongoose params
@@ -23,6 +26,8 @@ mongoose.connect(DB, dbParams, (err) => {
 // Body-parser middleware
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
+
+server.use('/api/v1/post', post);
 
 // Render compiled react in production
 if (process.env.NODE_ENV === 'production') {
