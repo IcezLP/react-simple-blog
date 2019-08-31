@@ -23,7 +23,7 @@ class Header extends Component {
     const { isOpen } = this.state;
 
     return (
-      <MDBNavbar color="blue" dark expand="md">
+      <MDBNavbar color="cyan" dark expand="md">
         <MDBNavbarBrand className="white-text">
           <Link to="/" className="white-text">
             React Simple Blog
