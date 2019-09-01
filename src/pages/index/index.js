@@ -11,7 +11,7 @@ class Index extends Component {
   }
 
   render() {
-    const { posts, loading } = this.props.posts; // eslint-disable-line
+    const { posts, loadingPosts } = this.props.posts; // eslint-disable-line
 
     const spinner = (
       <div className="text-center">
@@ -22,7 +22,9 @@ class Index extends Component {
     );
 
     return (
-      <MDBContainer className="py-5">{loading ? spinner : <Posts posts={posts} />}</MDBContainer>
+      <MDBContainer className="py-5">
+        {loadingPosts ? spinner : <Posts posts={posts} />}
+      </MDBContainer>
     );
   }
 }
@@ -31,7 +33,7 @@ Index.propTypes = {
   getPosts: PropTypes.func.isRequired,
   posts: PropTypes.shape({
     posts: PropTypes.arrayOf(PropTypes.object),
-    loading: PropTypes.bool.isRequired,
+    loadingPosts: PropTypes.bool.isRequired,
   }).isRequired,
 };
 

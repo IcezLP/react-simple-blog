@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MDBContainer } from 'mdbreact';
-import { CommentCount, DiscussionEmbed } from 'disqus-react';
+import { DiscussionEmbed } from 'disqus-react';
+import Moment from 'react-moment';
 import { getPost } from '../../redux/actions/postActions';
 
 class Post extends Component {
@@ -11,7 +12,7 @@ class Post extends Component {
   }
 
   render() {
-    const { post, loading } = this.props.posts; // eslint-disable-line
+    const { post, loadingPost } = this.props.posts; // eslint-disable-line
 
     const disqusShortname = 'react-simple-blog';
 
@@ -31,13 +32,19 @@ class Post extends Component {
 
     return (
       <MDBContainer className="py-5">
-        {loading ? (
+        {loadingPost ? (
           spinner
         ) : (
           <div className="animated fadeIn">
-            <span className="d-block">{post.createdAt}</span>
+            <p className="d-block">
+              Posted&nbsp;
+              <Moment fromNow ago>
+                {post.createdAt}
+              </Moment>
+              &nbsp;ago
+            </p>
             <h3 className="title">{post.title}</h3>
-            <p>{post.content}</p>
+            <p dangerouslySetInnerHTML={{ __html: post.content }} />
           </div>
         )}
 
@@ -51,7 +58,7 @@ Post.propTypes = {
   getPost: PropTypes.func.isRequired,
   posts: PropTypes.shape({
     post: PropTypes.object,
-    loading: PropTypes.bool.isRequired,
+    loadingPost: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
